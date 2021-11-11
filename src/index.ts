@@ -1,9 +1,8 @@
-import Koa from "koa";
-import Router from "koa-router";
+import * as Koa from "koa";
+import * as Router from "koa-router";
 
-import logger from "koa-logger";
-import json from "koa-json";
-import api from "./api";
+import * as logger from "koa-logger";
+import * as json from "koa-json";
 
 
 const app = new Koa();
@@ -18,6 +17,8 @@ router.get("/sub", (ctx,next) => {
     ctx.body = { msg : "sub page"}
 })
 
+
+import { router as api } from "./api";
 router.use("/api", api.routes() );
 
 

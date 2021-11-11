@@ -1,14 +1,12 @@
-import Router from "koa-router"
+import * as Router from "koa-router"
 import * as v2Controller from "./controller"
 
-const app = new Router()
+export const router = new Router()
 
 
-app.get('/', (ctx) => {
+router.get('/', (ctx) => {
     ctx.body = "here is v2"
 })
 
 
-app.post('/delete', v2Controller.default.delete)
-
-export default app
+router.post('/delete', v2Controller.default.delete)

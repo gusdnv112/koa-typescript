@@ -1,16 +1,16 @@
-import exp from "constants";
-import Router from "koa-router" 
-import route1 from "./v1";
-import route2 from "./v2";
+import * as exp from "constants";
+import * as Router from "koa-router" 
 
-const api = new Router()
+export const router = new Router()
 
-api.get("/", (ctx,next) => {
+router.get("/", (ctx,next) => {
     ctx.body = { msg : "GET : " + ctx.request.path};
 });
 
-api.use("/v1", route1.routes())
 
-api.use("/v2", route2.routes())
+import { router as v1 } from "./v1";
+router.use("/v1", v1.routes())
 
-export default api;
+import { router as v2 } from "./v2";
+router.use("/v2", v2.routes())
+

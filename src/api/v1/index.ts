@@ -1,13 +1,16 @@
-import Router from "koa-router"
-import * as v1Controller from "./controller"
+import * as Router from "koa-router"
 
-const app = new Router()
+export const router = new Router();
 
-app.get('/', (ctx) => {
+router.get('/', (ctx) => {
     ctx.body = "here is v1"
 })
 
-app.post('/insert', v1Controller.default.insert )
-app.post('/update', v1Controller.default.update )
 
-export default app
+import { router as user}  from "./user";
+router.use('/user', user.routes());
+
+import { router as test}  from "./test";
+router.use('/test', test.routes());
+
+
